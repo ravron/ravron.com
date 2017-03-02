@@ -13,6 +13,8 @@ TIMEZONE = 'America/Los_Angeles'
 
 DEFAULT_LANG = 'en'
 
+THEME = 'themes/pelican-alchemy/alchemy'
+
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
@@ -26,9 +28,17 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
          ('Jinja2', 'http://jinja.pocoo.org/'),
          ('You can modify those links in your config file', '#'),)
 
-# Social widget
-SOCIAL = (('StackOverflow', 'https://stackoverflow.com/users/1292061'),
-          )
+# TODO: Edit css to roundify this
+SITEIMAGE = 'https://www.gravatar.com/avatar/b6dda2f05f2182e4ad1cf20cb6fa9872?s=128'
+
+DESCRIPTION = ''
+
+HIDE_AUTHORS = True
+
+ICONS = (
+    ('github', 'https://github.com/ravron'),
+    ('stack-overflow', 'https://stackoverflow.com/users/1292061'),
+)
 
 DEFAULT_PAGINATION = 10
 
