@@ -30,7 +30,7 @@ AUTHOR_FEED_RSS = None
 LINKS = ()
 
 # TODO: Edit css to roundify this
-SITEIMAGE = 'https://www.gravatar.com/avatar/b6dda2f05f2182e4ad1cf20cb6fa9872?s=128'
+SITEIMAGE = 'images/weasel-avatar.png width=150 height=150'
 
 DESCRIPTION = ''
 
