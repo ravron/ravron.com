@@ -8,6 +8,7 @@ SITEURL = ''
 
 PATH = 'content'
 
+DEFAULT_DATE_FORMAT = '%Y-%m-%d'
 TIMEZONE = 'America/Los_Angeles'
 
 DEFAULT_LANG = 'en'
@@ -26,8 +27,8 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
          ('You can modify those links in your config file', '#'),)
 
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+SOCIAL = (('StackOverflow', 'https://stackoverflow.com/users/1292061'),
+          )
 
 DEFAULT_PAGINATION = 10
 
