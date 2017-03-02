@@ -30,7 +30,7 @@ AUTHOR_FEED_RSS = None
 LINKS = ()
 
 # TODO: Edit css to roundify this
-SITEIMAGE = 'images/weasel-avatar.png width=150 height=150'
+SITEIMAGE = '/images/weasel-avatar.png width=150 height=150'
 
 DESCRIPTION = ''
 
