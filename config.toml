@@ -1,4 +1,4 @@
-baseURL = "https://ravron.com"
+baseURL = "https://ravron.com/"
 languageCode = "en-us"
 title = "Riley Avron"
 theme = "temple"
