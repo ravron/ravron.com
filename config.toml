@@ -1,0 +1,14 @@
+baseURL = "https://ravron.com"
+languageCode = "en-us"
+title = "Riley Avron"
+theme = "temple"
+disableKinds = ["RSS"]
+
+[params]
+    faviconfile = "/favicon-32x32.png"
+    dateformatpretty = "2006-01-02"
+
+[author]
+    name = "Riley Avron"
+    email = "riley.avron@gmail.com"
+    github = "ravron"
