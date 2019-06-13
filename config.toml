@@ -3,6 +3,9 @@ languageCode = "en-us"
 title = "Riley Avron"
 theme = "temple"
 disableKinds = ["RSS"]
+pygmentsStyle = "friendly"
+pygmentsCodeFences = true
+preserveTaxonomyNames = true
 
 [params]
     faviconfile = "/favicon-32x32.png"
@@ -12,3 +15,7 @@ disableKinds = ["RSS"]
     name = "Riley Avron"
     email = "riley.avron@gmail.com"
     github = "ravron"
+    stackoverflow = "1292061"
+
+[taxonomies]
+    category = "categories"
