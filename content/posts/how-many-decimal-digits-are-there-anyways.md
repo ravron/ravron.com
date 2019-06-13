@@ -1,7 +1,7 @@
 +++
 title = "How many decimal digits are there, anyways?"
 date = "2018-12-25"
-categories = ["ios"]
+categories = ["iOS", "unicode"]
 draft = true
 +++
 
@@ -9,7 +9,7 @@ Recently I was reviewing a PR opened by a colleague of mine and noticed a functi
 
 ```objc
 + (BOOL)validateNumber:(NSString *)number {
-    NSCharacterSet *invertedDecimalDigitCharacterSet = 
+    NSCharacterSet *invertedDecimalDigitCharacterSet =
         [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
     NSRange range = [number rangeOfCharacterFromSet:invertedDecimalDigitCharacterSet];
     // Ensure that the given string is digits only
@@ -44,7 +44,7 @@ s.contains("᠑")  // true!
 ```
 
 Note that for convenience I'm using Swift's CharacterSet, which is bridged to `NSCharacterSet`, so observations about
-it apply equally to its Objective-C counterpart. 
+it apply equally to its Objective-C counterpart.
 
 Clearly this isn't doing what my colleague intended. Just how many of these Nd characters are there? It seems like we
 ought to be able to simply ask the `CharacterSet` how many elements it has with `count`, but it doesn't conform to
@@ -70,12 +70,12 @@ is in the set. `compactMap` lets us ignore cases where `Unicode.Scalar` returns 
 0xDFFF, because these are invalid code points reserved for use as surrogates in UTF-16 (incidentally, UTF-16 is also the
 reason that 0x10FFFF is the maximum valid code point).
 
-According to this function, then, there are not just ten decimal number characters, as you might expect, but _six 
+According to this function, then, there are not just ten decimal number characters, as you might expect, but _six
 hundred_ and ten! To fix the bug, we'll just have to be more explicit:
 
 ```objc
 + (BOOL)validateAccountNumber:(NSString *)number {
-    NSCharacterSet *invertedArabicDecimalDigitCharacterSet = 
+    NSCharacterSet *invertedArabicDecimalDigitCharacterSet =
         [[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet];
     NSRange range = [number rangeOfCharacterFromSet:invertedArabicDecimalDigitCharacterSet];
     // Ensure that the given string is digits only
