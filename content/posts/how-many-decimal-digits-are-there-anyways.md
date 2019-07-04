@@ -1,8 +1,7 @@
 +++
 title = "How many decimal digits are there, anyways?"
-date = "2018-12-25"
+date = "2019-07-04"
 categories = ["iOS", "unicode"]
-draft = true
 +++
 
 Recently I was reviewing a PR opened by a colleague of mine and noticed a function like the following:
