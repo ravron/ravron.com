@@ -2,7 +2,6 @@ baseURL = "https://ravron.com/"
 languageCode = "en-us"
 title = "Riley Avron"
 theme = "temple"
-disableKinds = ["RSS"]
 pygmentsStyle = "friendly"
 pygmentsCodeFences = true
 preserveTaxonomyNames = true
