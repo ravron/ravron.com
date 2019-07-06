@@ -2,6 +2,8 @@
 title = "How many decimal digits are there, anyways?"
 date = "2019-07-04"
 categories = ["iOS", "unicode"]
+summary = """
+"Ten" sure would make sense, wouldn't it?"""
 +++
 
 Recently I was reviewing a PR opened by a colleague of mine and noticed a function like the following:
