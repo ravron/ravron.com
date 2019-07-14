@@ -1,8 +1,7 @@
 +++
 title = "Building python strings using character names"
-date = 2019-07-06
+date = 2019-07-14
 categories = ["python", "unicode"]
-draft = true
 summary = """
 Presumably someone, somewhere found this useful."""
 +++
@@ -19,7 +18,7 @@ familiar to someone familiar with almost any programming language.
 
 One of the escape sequences Python permits, though, is quite unusual. The
 documentation says that the escape sequence `\N{name}` means "character named
-`name` in the Unicode database. I've never seen a `\N{…}` escape sequence
+`name` in the Unicode database." I've never seen a `\N{…}` escape sequence
 before. Let's try it!
 
 ```python
