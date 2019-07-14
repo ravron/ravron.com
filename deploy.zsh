@@ -1,11 +1,10 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 set -eux
 
-# Need extglob for !(...) syntax
-shopt -s extglob
+setopt extendedglob
 
-rm -r public/!(CNAME)
+rm -r public/^CNAME
 hugo --minify
 git -C public add .
 git -C public commit -m 'Update site'
