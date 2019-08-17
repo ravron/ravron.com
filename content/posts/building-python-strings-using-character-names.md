@@ -10,11 +10,11 @@ I was perusing the [Python 3 language
 reference](https://docs.python.org/3/reference/index.html) and found something
 pretty surprising in the lexical analysis [section about string
 literals](https://docs.python.org/3/reference/lexical_analysis.html#string-and-bytes-literals).
-There's a table there that lists valid escape sequences in Python strings. All
-the usual suspects are there: `\'` to escape an apostrophe that would otherwise
-end the literal, `\n` to embed a newline, and even `\uxxxx` and `\Uxxxxxxxx` to
-identify Unicode code points with two or four bytes respectively. These are
-familiar to someone familiar with almost any programming language.
+There's a table there that lists valid escape sequences in Python strings, and
+all the usual suspects are there: `\'` to escape an apostrophe that would
+otherwise end the literal, `\n` to embed a newline, and even `\uxxxx` and
+`\Uxxxxxxxx` to identify Unicode code points with two or four bytes
+respectively. These are familiar to most people with programming experience.
 
 One of the escape sequences Python permits, though, is quite unusual. The
 documentation says that the escape sequence `\N{name}` means "character named
