@@ -10,7 +10,7 @@ In [a previous post]({{< ref "building-python-strings-using-character-names"
 >}}), I referred to Unicode code points by their names. In fact, each assigned
 code point does have a name, and they're often quite unwieldy. For that post, I
 wanted to choose character names that were especially long, and it wasn't
-immediately obvious how to do so.
+immediately obvious how to do so. Here's how I figured it out.
 
 The official source-of-truth for the Unicode database is the [Unicode Character
 Database](https://www.unicode.org/ucd/), or UCD. The database's full
@@ -23,13 +23,13 @@ reference for the Name property is `UnicodeData.txt`. Don't close TR-44 just
 yet, though — we'll need it again soon.
 
 The original UCD page indicated that the latest version of the UCD itself could
-be found [here](https://www.unicode.org/Public/UCD/latest/), and so it can. A
-couple subdirectories in is
+be found [here](https://www.unicode.org/Public/UCD/latest/). A couple
+subdirectories down is
 [`UnicodeData.txt`](https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt),
 1.7 MB of semicolon-separated data rows. `UnicodeData.txt` provides a lot of
 information, but we're just interested in the Name field. Unfortunately, it's
 clear from the first 48 lines that there's something odd going on with the Name.
-Some rows appear to have the name in a much later value:
+Some rows appear to have the name in a field near the end:
 
 ```text
 0007;<control>;Cc;0;BN;;;;;N;BELL;;;;
@@ -88,7 +88,7 @@ head
 0009;<control>;Cc;0;S;;;;;N;CHARACTER TABULATION;;;;
 ```
 
-OK, we can download it no-problem. Let's print the Name…
+OK, we can download it no problem. Let's print the Name…
 
 ```zsh
 $ curl -s https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt | \
@@ -139,7 +139,7 @@ NUMBER SIGN
 DOLLAR SIGN
 ```
 
-And now we just have to deal with the other case:
+And now we just have to deal with the case where it does:
 
 ```zsh
 $ curl -s https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt | \
@@ -196,5 +196,5 @@ FBFA 80 ARABIC LIGATURE UIGHUR KIRGHIZ YEH WITH HAMZA ABOVE WITH ALEF MAKSURA FI
 2967 72 LEFTWARDS HARPOON WITH BARB DOWN ABOVE RIGHTWARDS HARPOON WITH BARB DOWN
 ```
 
-And there's the answer for "what is the Unicode character with the longest
-name?" All it took was a bit of documentation and some classic text processing.
+And there's the answer for "what are the Unicode characters with the longest
+names?" All it took was a bit of documentation and some classic text processing.
