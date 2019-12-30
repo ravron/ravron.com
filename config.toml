@@ -4,6 +4,7 @@ title = "Riley Avron"
 theme = "temple"
 pygmentsStyle = "friendly"
 pygmentsCodeFences = true
+pygmentsUseClasses = true
 preserveTaxonomyNames = true
 
 [params]
