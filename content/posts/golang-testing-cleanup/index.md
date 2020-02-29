@@ -2,7 +2,6 @@
 title = "Go 1.14: testing's new T.Cleanup"
 date = 2020-02-29
 categories = ["go", "testing"]
-draft = true
 summary = """
 Last-in, first-out execution of a list of functions? Hey, that sounds familiar…"""
 +++
