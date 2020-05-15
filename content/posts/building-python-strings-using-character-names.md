@@ -74,7 +74,7 @@ if __name__ == '__main__':
 This script accepts an input string and prints the Python string that results by
 replacing each code point with its `\N{…}` escape sequence.
 
-```
+```text
 $ python expander.py 'François, Heßler, Noël, and Борис are all here! 👨‍👨‍👧‍👦'
 '\N{LATIN CAPITAL LETTER F}\N{LATIN SMALL LETTER R}\N{LATIN SMALL LETTER
 A}\N{LATIN SMALL LETTER N}\N{LATIN SMALL LETTER C WITH CEDILLA}\N{LATIN SMALL
