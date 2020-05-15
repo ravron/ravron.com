@@ -31,7 +31,7 @@ I'll break this up over a couple posts.
 
 _Let's watch!_
 
-##### Generate and DAD the link-local address
+### Generate and DAD the link-local address
 
 First, the device generates its link-local address. It does this starting with
 the 64-bit [link-local prefix](https://tools.ietf.org/html/rfc4291#page-11),
