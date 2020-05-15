@@ -2,7 +2,6 @@
 title = "Eavesdropping on SLAAC (part 1)"
 date = 2020-05-15
 categories = ["networking"]
-draft = true
 summary = """
 How many addresses does one host need?"""
 +++
