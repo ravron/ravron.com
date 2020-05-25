@@ -122,8 +122,9 @@ does!
 But a link-local address is of limited utility. Though it is required by the
 specification, packets from a link-local address cannot be routed, meaning they
 cannot leave the link on which they are originally sent! Translation: no
-internet access. In part 2, we'll see the device generate its globally unique
-routable addresses so that it can communicate with the world.
+internet access. In [part 2]({{< ref "/posts/eavesdropping-ipv6-slaac-part-2" >}}),
+we'll see the device generate its globally unique routable addresses so that it
+can communicate with the world.
 
 ### Resources
 
