@@ -5,7 +5,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  Deploy:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repo
