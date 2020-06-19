@@ -42,3 +42,7 @@ jobs:
           existing-config.json > new-config.json
         echo 'Will apply new config:'
         jq . new-config.json
+        aws cloudfront update-distribution \
+          --id E3UK5EPKDEOBYZ \
+          --if-match $(<etag.txt) \
+          --distribution-config file://new-config.json
