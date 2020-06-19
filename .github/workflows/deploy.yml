@@ -33,7 +33,7 @@ jobs:
       run: hugo --minify
 
     - name: Upload build result
-      if: ${{ env.DO_DEPLOY }}
+      if: env.DO_DEPLOY
       uses: actions/upload-artifact@v2
       with:
         name: build-output
@@ -43,7 +43,7 @@ jobs:
     name: Deploy to S3
     runs-on: ubuntu-latest
     needs: build
-    if: ${{ env.DO_DEPLOY }}
+    if: env.DO_DEPLOY
     steps:
     - name: Download build result
       uses: actions/download-artifact
