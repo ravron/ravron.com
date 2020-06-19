@@ -18,4 +18,16 @@ def lambda_handler(event, context):
         'value': CSP_VALUE,
         }]
 
+    headers['x-content-type-options'] = [{
+        'value': 'nosniff',
+        }]
+
+    headers['referrer-policy'] = [{
+        'value': 'same-origin',
+        }]
+
+    headers['strict-transport-security'] = [{
+        'value': 'max-age=63072000; includeSubDomains; preload',
+        }]
+
     return response

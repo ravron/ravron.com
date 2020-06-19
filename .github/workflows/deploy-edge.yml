@@ -32,7 +32,7 @@ jobs:
         jq -r .FunctionArn update.json > function-arn.txt
         echo 'Updated function to ' $(<function-arn.txt)
 
-    - name: Update Cloudfront to use new version
+    - name: Generate new Cloudfront config
       working-directory: ./edge
       run: |
         aws cloudfront get-distribution-config --id E3UK5EPKDEOBYZ > existing-config.json
@@ -41,6 +41,10 @@ jobs:
           existing-config.json > new-config.json
         echo 'Will apply new config:'
         jq . new-config.json
+
+    - name: Update Cloudfront to use new version
+      working-directory: ./edge
+      run: |
         aws cloudfront update-distribution \
           --id E3UK5EPKDEOBYZ \
           --if-match $(<etag.txt) \
