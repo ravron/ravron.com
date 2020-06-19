@@ -11,13 +11,12 @@ on:
     - 'static/**'
     - 'themes/temple'
 
-env:
-  DO_DEPLOY: ${{ github.ref == 'refs/heads/master' && github.event_name == 'push' }}
-
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    outputs:
+      build-artifact-name: ${{ steps.upload.outputs.foo }}
     steps:
     - name: Checkout repo
       uses: actions/checkout@v2
@@ -33,11 +32,15 @@ jobs:
       run: hugo --minify
 
     - name: Upload build result
-      if: env.DO_DEPLOY
+      id: upload
+      if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       uses: actions/upload-artifact@v2
       with:
         name: build-output
         path: public
+
+    - run: echo ${{ steps.upload.outputs.foo}}
+    - run: echo ${{ toJSON(steps.upload.outputs }}
 
   deploy-to-s3:
     name: Deploy to S3
