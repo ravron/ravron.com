@@ -4,14 +4,19 @@ on:
   push:
     branches: [ master ]
     paths:
+    - '.github/workflows/deploy.yml'
     - 'config.toml'
     - 'content/**'
     - 'resources/**'
     - 'static/**'
     - 'themes/temple'
 
+env:
+  DO_DEPLOY: false
+
 jobs:
-  Deploy:
+  build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repo
@@ -27,6 +32,12 @@ jobs:
     - name: Hugo build
       run: hugo --minify
 
+    - name: Upload build result
+      uses: actions/upload-artifact@v2
+      with:
+        name: build-output
+        path: public
+
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -34,5 +45,15 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
 
+    - run: echo ${{ github.event }}
+
     - name: Upload to S3
+      if: false
       run: aws s3 sync --delete public s3://ravron.com
+
+    - name: Invalidate CloudFront
+      if: false
+      run: |
+        aws cloudfront create-invalidation \
+          --distribution-id E3UK5EPKDEOBYZ \
+          --paths '/*'
