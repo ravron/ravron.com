@@ -3,7 +3,7 @@ name: Deploy the lambda@edge function
 on:
   push:
     branches: [ master ]
-    paths: [ '/edge/**' ]
+    paths: [ 'edge/**' ]
 
 jobs:
   Deploy:
