@@ -11,6 +11,7 @@ CSP_VALUE = ' '.join([
 
 
 def lambda_handler(event, context):
+    # Add a comment
     response = event['Records'][0]['cf']['response']
     headers = response['headers']
 
