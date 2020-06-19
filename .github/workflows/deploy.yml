@@ -1,8 +1,8 @@
-name: Deploy to S3
+name: Build and Deploy
 
 on:
+  pull_request:
   push:
-    # branches: [ master ]
     paths:
     - '.github/workflows/deploy.yml'
     - 'config.toml'
@@ -12,7 +12,7 @@ on:
     - 'themes/temple'
 
 env:
-  DO_DEPLOY: false
+  DO_DEPLOY: ${{ github.ref == 'refs/heads/master' && github.event_name == 'push' }}
 
 jobs:
   build:
@@ -33,7 +33,20 @@ jobs:
       run: hugo --minify
 
     - name: Upload build result
+      if: ${{ env.DO_DEPLOY }}
       uses: actions/upload-artifact@v2
+      with:
+        name: build-output
+        path: public
+
+  deploy-to-s3:
+    name: Deploy to S3
+    runs-on: ubuntu-latest
+    needs: build
+    if: ${{ env.DO_DEPLOY }}
+    steps:
+    - name: Download build result
+      uses: actions/download-artifact
       with:
         name: build-output
         path: public
@@ -45,14 +58,15 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
 
-    - run: echo '${{ github.ref }}'
-
     - name: Upload to S3
-      if: false
       run: aws s3 sync --delete public s3://ravron.com
 
+  invalidate-cloudfront:
+    name: Invalidate CloudFront
+    runs-on: ubuntu-latest
+    needs: deploy-to-s3
+    steps:
     - name: Invalidate CloudFront
-      if: false
       run: |
         aws cloudfront create-invalidation \
           --distribution-id E3UK5EPKDEOBYZ \
