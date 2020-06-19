@@ -37,8 +37,7 @@ jobs:
       run: |
         aws cloudfront get-distribution-config --id E3UK5EPKDEOBYZ > existing-config.json
         jq -r .ETag existing-config.json > etag.txt
-        jq 'del(.ETag) |
-          .DistributionConfig.DefaultCacheBehavior.LambdaFunctionAssociations.Items[0].LambdaFunctionARN = '$(jq .FunctionArn update.json) \
+        jq '.DistributionConfig | .DefaultCacheBehavior.LambdaFunctionAssociations.Items[0].LambdaFunctionARN = '$(jq .FunctionArn update.json) \
           existing-config.json > new-config.json
         echo 'Will apply new config:'
         jq . new-config.json
