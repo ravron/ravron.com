@@ -12,7 +12,7 @@ on:
     - 'themes/temple'
 
 env:
-  DO_DEPLOY: &dodeploy ${{ github.ref == 'refs/heads/master' && github.event_name == 'push' }}
+  DO_DEPLOY: ${{ github.ref == 'refs/heads/master' && github.event_name == 'push' }}
 
 jobs:
   build:
@@ -43,7 +43,9 @@ jobs:
     name: Deploy to S3
     runs-on: ubuntu-latest
     needs: build
-    if: *dodeploy
+    # References to the env context aren't supported here, so copy-paste from
+    # the definition of DO_DEPLOY.
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
     steps:
     - name: Download build result
       uses: actions/download-artifact@v2
