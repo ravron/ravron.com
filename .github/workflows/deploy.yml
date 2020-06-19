@@ -40,7 +40,7 @@ jobs:
         path: public
 
     - run: echo ${{ steps.upload.outputs.foo}}
-    - run: echo ${{ toJSON(steps.upload.outputs }}
+    - run: echo ${{ toJSON(steps.upload.outputs) }}
 
   deploy-to-s3:
     name: Deploy to S3
