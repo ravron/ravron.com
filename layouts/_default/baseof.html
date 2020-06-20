@@ -3,13 +3,6 @@
 <head>
   <meta charset="utf-8">
 
-  {{/* Allow the livereload.js script's functionality iff we're running in server mode */}}
-  {{ $s := "" }}
-  {{ if site.IsServer }}
-  {{ $s = "script-src 'self' 'sha512-gOV/VHal2490Lqs5m9ZH4DB3brwtQNYj6MqAIyPzjZfwZiKrjkfm1dgJEzj5M3VERytWjm3ZLMg11nCJtWWwdg=='; connect-src 'self';" }}
-  {{ end }}
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'self'; {{ $s }} block-all-mixed-content; require-sri-for script style; frame-ancestors 'none'; base-uri 'none'; form-action 'none';">
-
   <title>
     {{ block "title" . }}
       {{ .Title }}
