@@ -6,6 +6,7 @@ pygmentsStyle = "friendly"
 pygmentsCodeFences = true
 pygmentsUseClasses = true
 preserveTaxonomyNames = true
+disableKinds = ["RSS", "sitemap"]
 
 # comment
 [params]
