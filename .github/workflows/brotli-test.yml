@@ -1,0 +1,10 @@
+name: Brotli test
+
+on: push
+
+jobs:
+  brotli:
+    name: Brotli
+    runs-on: ubuntu-latest
+    steps:
+    - run: apt-get install brotli -y
