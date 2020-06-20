@@ -5,8 +5,10 @@ on:
   push:
     paths:
     - '.github/workflows/deploy.yml'
+    - 'assets/**'
     - 'config.toml'
     - 'content/**'
+    - 'layouts/**'
     - 'resources/**'
     - 'static/**'
 
