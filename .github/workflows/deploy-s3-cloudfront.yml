@@ -4,7 +4,7 @@ on:
   pull_request:
   push:
     paths:
-    - '.github/workflows/deploy.yml'
+    - '.github/workflows/deploy-s3-cloudfront.yml'
     - 'assets/**'
     - 'config.toml'
     - 'content/**'
