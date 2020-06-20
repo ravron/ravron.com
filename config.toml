@@ -10,17 +10,43 @@ disableKinds = ["RSS", "sitemap"]
 
 # comment
 [params]
-    faviconfile = "/favicon-32x32.png"
-    dateformatpretty = "2006-01-02"
+  faviconfile = "/favicon-32x32.png"
+  dateformatpretty = "2006-01-02"
 
 [author]
-    name = "Riley Avron"
-    email = "ravron@posteo.net"
-    github = "ravron"
-    stackoverflow = "1292061"
+  name = "Riley Avron"
+  email = "ravron@posteo.net"
+  github = "ravron"
+  stackoverflow = "1292061"
 
 [taxonomies]
-    category = "categories"
+  category = "categories"
 
 [permalinks]
-    posts = "/:year/:month/:title"
+  posts = "/:year/:month/:title"
+
+# https://gohugo.io/getting-started/configuration/#configure-server
+[server]
+  [[server.headers]]
+    for = "/*"
+    [server.headers.values]
+      # script-src set to 'self' rather than 'none' as in production to allow
+      # the hot-reload script Hugo injects. When require-sri-for is enabled
+      # broadly this will break again. Fix will be to disable it in dev, or to
+      # add SRI to the live reload script in Hugo.
+      Content-Security-Policy = """\
+        default-src 'none'; \
+        img-src 'self'; \
+        style-src 'self'; \
+        block-all-mixed-content; \
+        require-sri-for script style; \
+        frame-ancestors 'none'; \
+        base-uri 'none'; \
+        form-action 'none'; \
+        script-src 'self'; \
+        connect-src 'self';\
+      """
+      X-Frame-Options = "DENY"
+      X-Content-Type-Options = "nosniff"
+      Referrer-Policy = "same-origin"
+      Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
