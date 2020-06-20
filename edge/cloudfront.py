@@ -18,6 +18,11 @@ def lambda_handler(event, context):
         'value': CSP_VALUE,
         }]
 
+    # Obsoleted by CSP frame-ancestors, but not all browsers honor that
+    headers['x-frame-options'] = [{
+        'value': 'DENY',
+        }]
+
     headers['x-content-type-options'] = [{
         'value': 'nosniff',
         }]
