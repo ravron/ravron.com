@@ -9,7 +9,6 @@ on:
     - 'content/**'
     - 'resources/**'
     - 'static/**'
-    - 'themes/temple'
 
 jobs:
   build:
@@ -18,8 +17,6 @@ jobs:
     steps:
     - name: Checkout repo
       uses: actions/checkout@v2
-      with:
-        submodules: true
 
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v2
