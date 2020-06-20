@@ -29,6 +29,7 @@ jobs:
       run: hugo --minify
 
     - name: Upload build result
+      # No need to upload if we won't deploy.
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       uses: actions/upload-artifact@v2
       with:
