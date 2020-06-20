@@ -1,0 +1,54 @@
+<nav class="footer-container">
+  <ul class="footer">
+    {{ with .Site.Author.name }}
+      <li class="footer__name">© {{ . }}</li>
+    {{ end }}
+
+    {{ with .Site.Author.email }}
+      <li>
+        <a href="mailto:{{ . }}" target="_blank" rel="noopener" class="footer__link">Email</a>
+      </li>
+    {{ end }}
+
+    {{ with .Site.Author.github }}
+      <li>
+        <a href="https://github.com/{{ . }}" class="footer__link">GitHub</a>
+      </li>
+    {{ end }}
+
+    {{ with .Site.Author.stackoverflow }}
+      <li>
+        <a href="https://stackoverflow.com/users/{{ . }}" class="footer__link">Stack Overflow</a>
+      </li>
+    {{ end }}
+
+    {{ with .Site.Author.twitter }}
+      <li>
+        <a href="https://twitter.com/{{ . }}" class="footer__link">Twitter</a>
+      </li>
+    {{ end }}
+
+    {{ with .Site.Author.medium }}
+      <li>
+        <a href="https://medium.com/@{{ . }}" class="footer__link">Medium</a>
+      </li>
+    {{ end }}
+
+    {{ if (fileExists "static/key.txt") }}
+      <li>
+        <a href="{{ absURL "key.txt" }}" class="footer__link">PGP key</a>
+      </li>
+    {{ end }}
+
+    <li class="footer__spacer"></li>
+
+    <li>
+      <a href="#" class="footer__link">↑↑</a>
+    </li>
+    {{ with .OutputFormats.Get "RSS" }}
+      <li>
+        <a href="{{ .Permalink }}" class="footer__link">RSS</a>
+      </li>
+    {{ end }}
+  </ul>
+</nav>

@@ -1,0 +1,20 @@
+<nav class="navbar-container">
+  <ul class="navbar">
+    <li class="navbar__item navbar__item--site-title">
+      <a href="{{ $.Site.BaseURL }}"
+         class="navbar__link navbar__link--site-title">
+        {{ $.Site.Title }}
+      </a>
+    </li>
+
+    {{ range $name, $taxonomy := $.Site.Taxonomies }}
+      <li class="navbar__item">
+        <a href="{{ $.Site.BaseURL }}{{ urlize $name }}/" class="navbar__link">{{ title $name }}</a>
+      </li>
+    {{ end }}
+
+    <li class="navbar__item">
+      <a href="{{ $.Site.BaseURL }}about/" class="navbar__link">About</a>
+    </li>
+  </ul>
+</nav>

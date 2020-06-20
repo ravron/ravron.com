@@ -1,7 +1,6 @@
 baseURL = "https://ravron.com/"
 languageCode = "en-us"
 title = "Riley Avron"
-theme = "temple"
 pygmentsStyle = "friendly"
 pygmentsCodeFences = true
 pygmentsUseClasses = true

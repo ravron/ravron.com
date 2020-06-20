@@ -1,0 +1,14 @@
+{{ define "main" }}
+  <div class="post">
+    <header class="post-title">
+      <h1 class="post-title__heading">{{ .Title }}</h1>
+    </header>
+
+    <article class="post-content">
+      {{ if (fileExists "static/profile-image.jpg") }}
+      <img class="profile-image" src="{{ absURL "profile-image.jpg" }}">
+      {{ end }}
+      {{ .Content }}
+    </article>
+  </div>
+{{ end }}

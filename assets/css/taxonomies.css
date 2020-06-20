@@ -1,0 +1,19 @@
+.taxonomies {
+	color: #575757;
+	font-size: 0.75rem;
+	margin: 0;
+}
+
+.taxonomies--single {
+	font-size: unset;
+	margin: .5rem 0;
+}
+
+.taxonomies__link {
+	color: #575757;
+}
+
+.taxonomies__link:hover {
+	color: #369;
+	text-decoration: underline;
+}
