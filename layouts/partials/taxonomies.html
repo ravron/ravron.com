@@ -1,0 +1,47 @@
+{{/*
+This template should be provided with a dict like:
+  {{ partial taxonomies (dict "modifier" "" "dot" .) }}
+*/}}
+{{ $modifier := .modifier }}
+{{ with .dot }}
+  {{ $baseURL := .Site.BaseURL }}
+  <p class="taxonomies{{ with $modifier }} taxonomies--{{ . }}{{ end }}">
+    {{ partial "date.html" . }}
+
+    {{ if or .Params.tags .Params.categories .Params.series }}
+      |
+    {{ end }}
+
+    {{ with .Params.tags }}
+      tags: [
+      {{ range . }}
+        <a class="taxonomies__link{{ with $modifier }} taxonomies__link--{{ . }}{{ end }}"
+           href="{{ $baseURL }}tags/{{ . | urlize }}/">
+          {{- . -}}
+        </a>
+      {{ end }}]
+    {{ end }}
+
+    {{ with .Params.categories }}
+      categories: [
+      {{ range . }}
+        <a class="taxonomies__link{{ with $modifier }} taxonomies__link--{{ . }}{{ end }}"
+           href="{{ $baseURL }}categories/{{ . | urlize }}/">
+          {{- . -}}
+        </a>
+      {{ end }}
+      ]
+    {{ end }}
+
+    {{ with .Params.series }}
+      series: [
+      {{ range . }}
+        <a class="taxonomies__link{{ with $modifier }} taxonomies__link--{{ . }}{{ end }}"
+           href="{{ $baseURL }}series/{{ . | urlize }}/">
+          {{- . -}}
+        </a>
+      {{ end }}
+      ]
+    {{ end }}
+  </p>
+{{ end }}

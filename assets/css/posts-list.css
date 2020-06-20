@@ -1,0 +1,41 @@
+.posts-name {
+	font-weight: bold;
+	margin-top: 1rem;
+	padding-left: 1rem;
+}
+
+.posts-list {
+	list-style-type: none;
+	padding-left: 1rem;
+}
+
+.posts-list__post {
+	margin-bottom: 1rem;
+}
+
+.posts-list__title {
+	color: #369;
+	font-size: large;
+	text-decoration: none;
+}
+
+.posts-list__summary {
+	font-size: 14px;
+	margin: 0 0 .2rem 0;
+}
+
+.posts-list__taxonomies {
+	color: #575757;
+	font-size: 0.75rem;
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+.posts-list__taxonomy-link {
+	color: #575757;
+}
+
+.posts-list__taxonomy-link:hover {
+	color: #369;
+	text-decoration: underline;
+}

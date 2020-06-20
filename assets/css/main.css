@@ -1,0 +1,39 @@
+* {
+	box-sizing: border-box;
+}
+
+a {
+	color: #369;
+}
+
+a:not(:hover) {
+	text-decoration: none;
+}
+
+html {
+	/* Center the content box. */
+	background-color: rgb(252, 252, 252);
+	color: #484848;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	margin: 0 auto;
+	max-width: 1000px;
+	padding: 0 4%;
+}
+
+@media screen and (max-width: 767px) {
+	html {
+		padding: 0 2%;
+	}
+}
+
+/* The whole body is a flexbox to keep the footer at the bottom. */
+body {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	min-height: 100vh;
+}
+
+.main {
+	flex: 1;
+}

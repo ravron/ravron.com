@@ -1,0 +1,16 @@
+{{/*
+This content view template knows how to render a list item representing a post
+including its title, date, and any tags, categories, or series labels.
+
+See https://gohugo.io/templates/views/
+*/}}
+<li class="posts-list__post">
+  {{ if .Draft }}
+    DRAFT:
+  {{ end }}
+  <a class="posts-list__title" href="{{ .Permalink }}">{{ .Title }}</a>
+
+  <p class="posts-list__summary">{{ .Summary }}</p>
+
+  {{ partial "taxonomies.html" (dict "dot" $) }}
+</li>
