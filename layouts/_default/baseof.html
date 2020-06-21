@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-
   <title>
     {{ block "title" . }}
       {{ .Title }}
@@ -30,10 +29,6 @@
   {{ else }}
     {{ $css := resources.Concat "css/styles.css" $cssResources | resources.Minify | resources.Fingerprint }}
     <link href="{{ $css.Permalink }}" integrity="{{ $css.Data.Integrity }}" rel="stylesheet" type="text/css"/>
-  {{ end }}
-
-  {{ with .OutputFormats.Get "RSS" }}
-    <link href="{{ .Permalink }}" rel="alternate" type="application/rss+xml" title="{{ site.Title }}"/>
   {{ end }}
 
   {{ hugo.Generator }}
