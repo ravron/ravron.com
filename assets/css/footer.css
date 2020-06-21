@@ -21,6 +21,10 @@
 	padding: .5em .5em;
 }
 
+.footer__to-top {
+    margin-left: auto;
+}
+
 .footer__name {
 	color: #484848;
 }
