@@ -7,7 +7,6 @@ pygmentsUseClasses = true
 preserveTaxonomyNames = true
 disableKinds = ["RSS", "sitemap"]
 
-# comment
 [params]
   faviconfile = "/favicon-32x32.png"
   dateformatpretty = "2006-01-02"
