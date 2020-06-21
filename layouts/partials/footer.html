@@ -40,15 +40,8 @@
       </li>
     {{ end }}
 
-    <li class="footer__spacer"></li>
-
-    <li>
+    <li class="footer__to-top">
       <a href="#" class="footer__link">↑↑</a>
     </li>
-    {{ with .OutputFormats.Get "RSS" }}
-      <li>
-        <a href="{{ .Permalink }}" class="footer__link">RSS</a>
-      </li>
-    {{ end }}
   </ul>
 </nav>
