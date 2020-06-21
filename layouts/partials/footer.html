@@ -34,14 +34,20 @@
       </li>
     {{ end }}
 
-    {{ if (fileExists "static/key.txt") }}
+    {{ if fileExists "static/key.txt" }}
       <li>
         <a href="{{ absURL "key.txt" }}" class="footer__link">PGP key</a>
       </li>
     {{ end }}
 
-    <li class="footer__to-top">
-      <a href="#" class="footer__link">↑↑</a>
-    </li>
+    {{ if .IsPage }}
+      {{ $path := .File.Path }}
+      {{ with .Site.Author.repo }}
+        <li class="footer__source">
+          <a href="https://github.com/{{ . }}/edit/master/content/{{ $path }}"
+            class="footer__link">Propose edits to this page</a>
+        </li>
+      {{ end }}
+    {{ end }}
   </ul>
 </nav>

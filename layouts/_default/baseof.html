@@ -42,8 +42,7 @@
   {{ end }}
 </main>
 
-{{/* Footer never changes, so cache it unconditionally. */}}
-{{ partialCached "footer.html" . }}
+{{ partial "footer.html" . }}
 
 </body>
 </html>
