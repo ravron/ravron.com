@@ -6,5 +6,5 @@ handled using [GitHub Actions](https://github.com/features/actions), the source
 for which is found in the [.github/workflows directory](.github/workflows).
 Security headers are added with
 [Lambda@Edge](https://aws.amazon.com/lambda/edge/) using the
-[`cloudfront.py`](edge/cloudfront.py) script. If you find any errors or wish to
+[`viewer-response.py`](edge/viewer-response.py) script. If you find any errors or wish to
 suggest improvements, pull requests are welcome.
