@@ -27,10 +27,10 @@ jobs:
 
     - name: Update function
       run: |
-        zip cloudfront.zip cloudfront.py
+        zip viewer-response.zip viewer-response.py
         aws lambda update-function-code \
           --function-name arn:aws:lambda:us-east-1:015240938778:function:ravroncom-edge \
-          --zip-file fileb://cloudfront.zip \
+          --zip-file fileb://viewer-response.zip \
           --publish > update.json
         jq -r .FunctionArn update.json > function-arn.txt
         echo 'Updated function to ' $(<function-arn.txt)
