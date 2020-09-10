@@ -273,7 +273,7 @@ provider is [Route53](https://aws.amazon.com/route53/), and acme.sh has [a
 module to support
 it](https://github.com/acmesh-official/acme.sh/blob/053f4a9a2e7f74aaec4493f5e9828f229088ab7c/dnsapi/dns_aws.sh).
 However, there is of course a catch: editing Route53 records means that I have
-to provide access to my AWS account so that acme.sh can add TXT record to the
+to provide access to my AWS account so that acme.sh can add a TXT record to the
 unifi.ravron.com subdomain.
 
 As usual, I want to ensure that any authorization I issue is as limited as
