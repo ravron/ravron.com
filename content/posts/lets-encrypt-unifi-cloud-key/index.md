@@ -28,7 +28,7 @@ connection is not private. Attackers might be trying to steal your information
 from 192.168.1.3 (for example, passwords, messages, or credit cards)." There is
 also a "Learn more" link, and the error identifier
 "NET::ERR_CERT_COMMON_NAME_INVALID." Two buttons at the bottom read
-"Advanced" and "Back to safety"`
+"Advanced" and "Back to safety."`
 >}}
 
 Though my browser, Brave, caches my bypass of this warning for a little while,
@@ -281,7 +281,7 @@ reasonably possible. There's a [short wiki
 page](https://github.com/acmesh-official/acme.sh/wiki/How-to-use-Amazon-Route53-API)
 that describes how to set up the necessary IAM permissions for acme.sh, and I
 largely followed it, using the appendix's "more restrictive" policy. However, I
-was a little nervous giving my cloud key access to do effectively anything with
+was a little nervous giving my Cloud Key access to do effectively anything with
 the ravron.com domain, and I did look for a way to scope down those permissions.
 I found [this excellent analysis of schemes to reduce authorization
 scope](https://www.eff.org/deeplinks/2018/02/technical-deep-dive-securing-automation-acme-dns-challenge-validation)
