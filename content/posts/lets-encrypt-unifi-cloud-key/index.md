@@ -399,7 +399,7 @@ certificate to see if it's approaching its not-valid-after date, and renews it
 if so. All of the hooks and filepaths used during the original `--issue` command
 are saved and re-used, so there's no need to specify them again here.
 
-It's now easy to check when the next renewal check will happen using `systemctl
+It's now easy to see when the next renewal check will happen using `systemctl
 status`:
 
 ```
@@ -472,7 +472,9 @@ on my network's DNS server such that unifi.ravron.com resolved to my
 controller's IP.
 
 If you run into any issues, or find this guide lacking, send me an email, and
-I'll update the page to be more helpful.
+I'll update the page to be more helpful. If you're feeling even more charitable,
+you can open a PR against this page, too. Both my email and the link to open a
+PR are in the footer.
 
 ## Resources
 
