@@ -59,8 +59,8 @@ satisfy my goals. The ideal setup would:
 
 With these objectives in mind I set out to build something to suit. While I used
 a number of resources working on this, I should give special credit to [this
-post by Gerd Naschenweng
-](https://www.naschenweng.info/2017/01/06/securing-ubiquiti-unifi-cloud-key-encrypt-automatic-dns-01-challenge/),
+post by Gerd
+Naschenweng](https://www.naschenweng.info/2017/01/06/securing-ubiquiti-unifi-cloud-key-encrypt-automatic-dns-01-challenge/),
 which describes an end result fairly similar to what I did here.
 
 ## Planning for automatic renewal with ACME v2
@@ -273,7 +273,7 @@ provider is [Route53](https://aws.amazon.com/route53/), and acme.sh has [a
 module to support
 it](https://github.com/acmesh-official/acme.sh/blob/053f4a9a2e7f74aaec4493f5e9828f229088ab7c/dnsapi/dns_aws.sh).
 However, there is of course a catch: editing Route53 records means that I have
-to provide access to my AWS account so that acme.sh can a TXT record to the
+to provide access to my AWS account so that acme.sh can add TXT record to the
 unifi.ravron.com subdomain.
 
 As usual, I want to ensure that any authorization I issue is as limited as
