@@ -1,6 +1,6 @@
 +++
 title = "Using Let's Encrypt TLS certificates on the UniFi Cloud Key"
-date = 2020-09-06
+date = 2020-09-09
 categories = ["networking", "unifi"]
 summary = """
 How I convinced my browser that my network controller isn't trying to steal my credit card."""
