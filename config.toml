@@ -14,7 +14,7 @@ disableKinds = ["RSS", "sitemap"]
 [author]
   name = "Riley Avron"
   repo = "ravron/ravron.com"
-  email = "ravron@posteo.net"
+  email = "ravron.com@posteo.net"
   github = "ravron"
   stackoverflow = "1292061"
 
