@@ -89,6 +89,10 @@ it definitely got the job done.
 
 ## Installation
 
+**NB: The inline code samples below may be out of date compared with the source.
+If you're going to use some of this code, go to the [source
+repository](https://github.com/ravron/unifi/tree/master/cert).**
+
 That choice made, I started on the idempotent setup script. First, some sanity
 checks to ensure I couldn't do something too foolish.
 
@@ -320,7 +324,6 @@ Finally, we're ready to issue a certificate.
 # Let's Encrypt's staging servers will be used indefinitely until you remove the
 # `--staging` option and re-run the setup script.
 ~/.acme.sh/acme.sh \
-    --staging \
     --issue \
     --dns dns_aws \
     --domain unifi.ravron.com \
@@ -331,16 +334,15 @@ Finally, we're ready to issue a certificate.
     --accountemail 'ravron@posteo.net' || true
 ```
 
-The command is largely self-explanatory. Note though that as written it
-communicates with Let's Encrypt's staging environment, so the certificate issued
-won't be accepted by browsers. I've done this here because the production
-environment has somewhat stringent [rate
-limits](https://letsencrypt.org/docs/rate-limits/) to prevent abuse, while the
-staging environment's rate limits are [dramatically
+The command is largely self-explanatory. Note though that while you're testing,
+you should use the `--staging` flag, which causes acme.sh to communicate with
+Let's Encrypt's staging environment, so the certificate issued won't be accepted
+by browsers. That's important because the production environment has somewhat
+stringent [rate limits](https://letsencrypt.org/docs/rate-limits/) to prevent
+abuse, while the staging environment's rate limits are [dramatically
 looser](https://letsencrypt.org/docs/staging-environment/). Once you've tested
-the script and got it configured, you should remove the `--staging` flag and
-re-run the setup to ensure that future renewals will use the production
-environment.
+the script and got it configured, remove the `--staging` flag and re-run the
+setup to ensure that future renewals will use the production environment.
 
 The command takes a little while, because it must communicate with Let's
 Encrypt, then modify my DNS records and sleep a while before asking Let's
