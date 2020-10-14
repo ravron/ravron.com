@@ -434,10 +434,11 @@ ssh uck 'bash -s' < remote-uck-setup.bash "$KEY_ID" "$SECRET_KEY"
 ```
 
 You can find both [the main
-script](https://github.com/ravron/unifi/blob/74d8958e924a028b26fbc8286f0782aa29ca66f7/cert/remote-uck-setup.bash)
+script](https://github.com/ravron/unifi/blob/master/cert/remote-uck-setup.bash)
 I've discussed and [the
-wrapper](https://github.com/ravron/unifi/blob/74d8958e924a028b26fbc8286f0782aa29ca66f7/cert/uck-setup.zsh)
-on [GitHub](https://github.com/ravron/unifi/tree/74d8958e924a028b26fbc8286f0782aa29ca66f7/cert).
+wrapper](https://github.com/ravron/unifi/blob/master/cert/uck-setup.zsh)
+on [GitHub](https://github.com/ravron/unifi/tree/master/cert). These links will
+be the best choice for up-to-date sources.
 
 ## Issues I encountered
 
