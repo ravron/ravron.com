@@ -30,15 +30,12 @@ disableKinds = ["RSS", "sitemap"]
     for = "/*"
     [server.headers.values]
       # script-src set to 'self' rather than 'none' as in production to allow
-      # the hot-reload script Hugo injects. When require-sri-for is enabled
-      # broadly this will break again. Fix will be to disable it in dev, or to
-      # add SRI to the live reload script in Hugo.
+      # the hot-reload script Hugo injects.
       Content-Security-Policy = """\
         default-src 'none'; \
         img-src 'self'; \
         style-src 'self'; \
         block-all-mixed-content; \
-        require-sri-for script style; \
         frame-ancestors 'none'; \
         base-uri 'none'; \
         form-action 'none'; \
