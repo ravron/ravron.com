@@ -1,5 +1,9 @@
+@import "vars";
+
 .navbar-container {
-	margin: 5px 0;
+	margin: 5px auto;
+	max-width: $content-width;
+  	width: 100%;
 }
 
 .navbar {

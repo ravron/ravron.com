@@ -1,12 +1,20 @@
+@import "vars";
+
 .posts-name {
 	font-weight: bold;
-	margin-top: 1rem;
-	padding-left: 1rem;
+    margin-block-start: 1rem;
+	padding-inline-start: 1rem;
+    max-width: $content-width;
+    margin-inline-start: auto;
+	margin-inline-end: auto;
 }
 
 .posts-list {
 	list-style-type: none;
 	padding-left: 1rem;
+	max-width: $content-width;
+	margin-inline-start: auto;
+	margin-inline-end: auto;
 }
 
 .posts-list__post {

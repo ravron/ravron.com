@@ -1,0 +1,104 @@
+@import "vars";
+
+.post {
+	font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+	margin-block-start: 1rem;
+}
+
+/* Keep headers closer to their following content */
+.post-content {
+	h1 + *, h2 + *, h3 + *, h4 + *, h5 + *, h6 + * {
+		margin-block-start: 0.5em;
+	}
+}
+
+.post-content {
+	h1, h2, h3, h4, h5, h6 {
+		margin-block-start: 1em;
+		margin-block-end: 0.5em;
+	}
+}
+
+.post-content h1 {
+	font-size: 28px;
+}
+
+.post-content h2 {
+	font-size: 25px;
+}
+
+.post-content h3 {
+	font-size: 23px;
+}
+
+.post-content h4 {
+	font-size: 21px;
+}
+
+.post-content h5 {
+	font-size: 19px;
+}
+
+.post-content h6 {
+	font-size: 18px;
+}
+
+.post-title,
+.post-content > * {
+	max-width: $content-width;
+	margin-inline-start: auto;
+	margin-inline-end: auto;
+}
+
+.post-content > figure {
+	max-width: 1500px;
+	text-align: center;
+}
+
+figcaption {
+	font-size: 90%;
+    text-align: start;
+	max-width: $content-width;
+	margin-inline-start: auto;
+	margin-inline-end: auto;
+	font-style: italic;
+}
+
+figcaption > p {
+	margin-block-start: 0;
+}
+
+.post-title {
+	margin-block-start: 0;
+	margin-block-end: 2em;
+}
+
+.post-title__heading {
+	font-weight: bold;
+	line-height: 40px;
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+.post-content {
+	font-size: 16px;
+	line-height: 1.4;
+}
+
+.post-content img {
+	height: auto;
+	max-width: 100%;
+}
+
+.post-content pre {
+	font-size: .8125rem;
+	overflow: auto;
+	padding: 0.5em;
+}
+
+.post-content blockquote {
+	border-inline-start: 2px solid #d7d7d7;
+	margin-block-start: 0;
+	margin-block-end: 0;
+	padding: 0 10px;
+}

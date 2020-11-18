@@ -19,16 +19,18 @@
           {{ end }}
         type="image/x-icon">
 
-  {{ $cssResources := resources.Match "css/*.css" }}
+  {{ $scssMain := resources.Get "scss/main.scss" }}
+  {{ $scssOptions := dict }}
 
-  {{/* Don't optimize the CSS for local development */}}
   {{ if site.IsServer }}
-    {{ range $cssResources }}
-      <link href="{{ .Permalink }}" rel="stylesheet" type="text/css"/>
-    {{ end }}
+    {{/* Don't optimize the CSS for local development */}}
+    {{ $scssOptions := dict "enableSourceMap" true }}
+    {{ $style := $scssMain | resources.ToCSS $scssOptions }}
+    <link href="{{ $style.Permalink }}" rel="stylesheet" type="text/css"/>
   {{ else }}
-    {{ $css := resources.Concat "css/styles.css" $cssResources | resources.Minify | resources.Fingerprint }}
-    <link href="{{ $css.Permalink }}" integrity="{{ $css.Data.Integrity }}" rel="stylesheet" type="text/css"/>
+    {{ $scssOptions := dict "outputStyle" "compressed" }}
+    {{ $style := $scssMain | resources.ToCSS $scssOptions }}
+    <link href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}" rel="stylesheet" type="text/css"/>
   {{ end }}
 
   {{ hugo.Generator }}
