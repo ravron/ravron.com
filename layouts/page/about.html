@@ -5,9 +5,6 @@
     </header>
 
     <article class="post-content">
-      {{ if (fileExists "static/profile-image.jpg") }}
-      <img class="profile-image" src="{{ absURL "profile-image.jpg" }}">
-      {{ end }}
       {{ .Content }}
     </article>
   </div>
