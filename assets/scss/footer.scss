@@ -1,5 +1,9 @@
+@import "vars";
+
 .footer-container {
-	margin: 20px 0 5px;
+	margin: 20px auto 5px;
+	max-width: $content-width;
+	width: 100%;
 }
 
 .footer {
