@@ -59,12 +59,22 @@ without too much trouble:
 }
 ```
 
-See
-[here](https://help.ui.com/hc/en-us/articles/215458888-UniFi-USG-Advanced-Configuration-Using-config-gateway-json)
-for documentation on UniFi's `config.gateway.json` files.
+While I recommend reading Owen's blog post, linked above, for the details of
+what this configuration does, I can summarize briefly. The `interfaces` section
+configures a new pseudo-ethernet interface named `peth0` that will be linked to
+the physical `eth2` interfaces, corresponding to WAN2. The pseudo-ethernet
+interface has its own IP address and subnet mask, and to avoid conflicts with
+the physical interface that hosts it, it also uses a new, synthetic MAC address.
+Meanwhile, the `service` section configures NAT so that traffic outbound on the
+`peth0` interface will have its source IP address rewritten to that of the
+interface. For even more information, I recommend [the documentation on UniFi's
+`config.gateway.json`
+files](https://help.ui.com/hc/en-us/articles/215458888-UniFi-USG-Advanced-Configuration-Using-config-gateway-json),
+and the [documentation for
+Vyatta](http://0.us.mirrors.vyos.net/vyatta/vc6.5/docs/Vyatta-Documentation_6.5R1_v01/),
+the sort-of open-source base on which UniFi is built.
 
-In September, though, I got a new cable modem for the primary uplink on
-WAN1, an [Arris
+In September, I got a new cable modem for the primary uplink on WAN1, an [Arris
 SB8200](https://www.surfboard.com/products/cable-modems/sb8200/), and wanted to
 set things up just the same way. I figured I could use exactly the same
 strategy, and
@@ -140,7 +150,7 @@ Right away it was clear something was wrong. Just examining packets 1, 3, and 5,
 I could see that while my router's WAN1 port was correctly forwarding traffic
 masquerading as the pseudo-ethernet port's address, packets 3 and 5 were TCP
 retransmissions — my laptop was retransmitting packets after receiving no
-response for a second. Packets 2, 4, and 6 made it clear what's going on. In
+response for a second. Packets 2, 4, and 6 made it clear what was going on. In
 each of those packets, the modem broadcasted an ARP request, asking the owner of
 `192.168.100.2` to identify itself. Because my router didn't respond, the modem
 didn't know how to reply to the TCP packets coming in from `192.168.100.2`, and
