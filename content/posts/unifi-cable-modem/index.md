@@ -3,7 +3,7 @@ title = "Working around an unhelpful cable modem with UniFi"
 date = 2020-11-14
 categories = ["networking", "unifi"]
 summary = """
-A lot of extra effort because my modem has bad ARP etiquette"""
+My modem could use a lesson in ARP etiquette."""
 +++
 
 The router at the edge of my home network is an [UniFi Security Gateway
