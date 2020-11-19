@@ -137,7 +137,6 @@ WAN1 port. Here's a cleaned-up version of what I saw:
 
 {{< figure
 src="failing-capture.png"
-link="failing-capture.png"
 caption="You can see the capture for yourself [here](failing-capture.pcapng)."
 alt=`Screenshot of Wireshark showing six packets.
 Packet 1: TCP SYN from 192.168.100.2 to 192.168.100.2

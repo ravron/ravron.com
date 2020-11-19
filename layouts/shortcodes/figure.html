@@ -1,0 +1,36 @@
+{{/*
+This shortcode overrides the built-in figure shortcode to provide:
+  - Default width and height based on the image, see https://blog.logrocket.com/jank-free-page-loading-with-media-aspect-ratios/
+  - If no link param provided, default to src
+*/}}
+
+{{ $imageData := .Get "src" | .Page.Resources.GetMatch }}
+{{ $width := $imageData.Width }}
+{{ $height := $imageData.Height }}
+
+<figure{{ with .Get "class" }} class="{{ . }}"{{ end }}>
+  <a href="{{ with .Get "link" }}{{ . }}{{ else }}{{ .Get "src" }}{{ end }}"{{ with .Get "target" }} target="{{ . }}"{{ end }}{{ with .Get "rel" }} rel="{{ . }}"{{ end }}>
+    <img src="{{ .Get "src" }}"
+            {{- if or (.Get "alt") (.Get "caption") }}
+              alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify| plainify }}{{ end }}"
+            {{- end -}}
+            width="{{- with .Get "width" }}{{ . }}{{ else }}{{ $width }}{{ end -}}"
+            height="{{- with .Get "height" }}{{ . }}{{ else }}{{ $height }}{{ end -}}"
+    /> <!-- Closing img tag -->
+  </a>
+    {{- if or (or (.Get "title") (.Get "caption")) (.Get "attr") -}}
+      <figcaption>
+          {{ with (.Get "title") -}}
+            <h4>{{ . }}</h4>
+          {{- end -}}
+          {{- if or (.Get "caption") (.Get "attr") -}}<p>
+              {{- .Get "caption" | markdownify -}}
+              {{- with .Get "attrlink" }}
+            <a href="{{ . }}">
+                {{- end -}}
+                {{- .Get "attr" | markdownify -}}
+                {{- if .Get "attrlink" }}</a>{{ end }}</p>
+          {{- end }}
+      </figcaption>
+    {{- end }}
+</figure>
