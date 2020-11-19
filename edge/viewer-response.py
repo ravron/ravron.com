@@ -3,7 +3,6 @@ CSP_VALUE = ' '.join([
      "img-src 'self';",
      "style-src 'self';",
      "block-all-mixed-content;",
-     "require-sri-for script style;",
      "frame-ancestors 'none';",
      "base-uri 'none';",
      "form-action 'none';",
