@@ -93,12 +93,22 @@ figcaption > p {
 .post-content pre {
 	font-size: .8125rem;
 	overflow: auto;
-	padding: 0.5em;
+	padding: 0.5rem;
 }
 
 .post-content blockquote {
 	border-inline-start: 2px solid #d7d7d7;
-	margin-block-start: 0;
-	margin-block-end: 0;
-	padding: 0 10px;
+	padding-inline-start: 10px;
+}
+
+.post-content .warning {
+	border-inline-start: 2px solid #feda00;
+	padding-inline-start: 10px;
+    padding-block-start: 0.5rem;
+    padding-block-end: 0.5rem;
+    background-color: #ffedcc;
+}
+
+strong {
+    font-weight: normal;
 }
