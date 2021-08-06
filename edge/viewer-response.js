@@ -22,5 +22,5 @@ function handler(event) {
 
   headers['strict-transport-security'] = {value: 'max-age=63072000; includeSubDomains; preload'};
 
-  return response;
+  return event.response;
 }

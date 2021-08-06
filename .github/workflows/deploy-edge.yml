@@ -75,4 +75,3 @@ jobs:
           --if-match $ETAG \
           --function-config Comment="",Runtime="cloudfront-js-1.0" \
           --function-code fileb://viewer-response.js
-        echo 'Updated function to ' $(<function-arn.txt)
