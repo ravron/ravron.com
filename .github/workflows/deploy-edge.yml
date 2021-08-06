@@ -12,46 +12,7 @@ defaults:
     working-directory: edge
 
 jobs:
-  Deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout repo
-      uses: actions/checkout@v2
-
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-1
-
-    - name: Update function
-      run: |
-        zip viewer-response.zip viewer-response.py
-        aws lambda update-function-code \
-          --function-name arn:aws:lambda:us-east-1:015240938778:function:ravroncom-edge \
-          --zip-file fileb://viewer-response.zip \
-          --publish > update.json
-        jq -r .FunctionArn update.json > function-arn.txt
-        echo 'Updated function to ' $(<function-arn.txt)
-
-    - name: Generate new Cloudfront config
-      run: |
-        aws cloudfront get-distribution-config --id E3UK5EPKDEOBYZ > existing-config.json
-        jq -r .ETag existing-config.json > etag.txt
-        jq '.DistributionConfig | .DefaultCacheBehavior.LambdaFunctionAssociations.Items[0].LambdaFunctionARN = '$(jq .FunctionArn update.json) \
-          existing-config.json > new-config.json
-        echo 'Will apply new config:'
-        jq . new-config.json
-
-    - name: Update Cloudfront to use new version
-      working-directory: ./edge
-      run: |
-        aws cloudfront update-distribution \
-          --id E3UK5EPKDEOBYZ \
-          --if-match $(<etag.txt) \
-          --distribution-config file://new-config.json
-  deploy-cloudfront-function:
+  deploy-cloudfront-viewer-response-function:
     name: Deploy Cloudfront function
     runs-on: ubuntu-latest
     steps:
@@ -64,7 +25,8 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
-    - name: Update Cloudfront function
+
+    - name: Update Cloudfront viewer-response function
       run: |
         ETAG=$(aws cloudfront describe-function \
           --name ravron-com-viewer-response | \
@@ -75,3 +37,12 @@ jobs:
           --if-match $ETAG \
           --function-config Comment="",Runtime="cloudfront-js-1.0" \
           --function-code fileb://viewer-response.js
+    - name: Publish Cloudfront viewer-response function
+      run: |
+        ETAG=$(aws cloudfront describe-function \
+          --name ravron-com-viewer-response | \
+          jq -r .ETag
+        )
+        aws cloudfront publish-function \
+          --name ravron-com-viewer-response \
+          --if-match $ETAG
