@@ -11,13 +11,8 @@
   <meta name="author" content="{{ site.Author.name }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="shortcut icon"
-          {{ if site.Params.faviconfile }}
-            href="{{ site.Params.faviconfile | absURL }}"
-          {{ else }}
-            href="{{ site.BaseURL }}img/favicon.ico"
-          {{ end }}
-        type="image/x-icon">
+  {{ $favicon := resources.Get "images/favicon-32x32.png" | fingerprint }}
+  <link rel="shortcut icon" href="{{ $favicon.Permalink }}" type="image/x-icon">
 
   {{ $scssMain := resources.Get "scss/main.scss" }}
   {{ $scssOptions := dict "outputStyle" "compressed" }}
