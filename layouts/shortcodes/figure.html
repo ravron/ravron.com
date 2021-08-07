@@ -4,13 +4,14 @@ This shortcode overrides the built-in figure shortcode to provide:
   - If no link param provided, default to src
 */}}
 
-{{ $imageData := .Get "src" | .Page.Resources.GetMatch }}
+{{ $imageData := .Get "src" | .Page.Resources.GetMatch | fingerprint}}
+{{ $imgPermalink := $imageData.Permalink }}
 {{ $width := $imageData.Width }}
 {{ $height := $imageData.Height }}
 
 <figure{{ with .Get "class" }} class="{{ . }}"{{ end }}>
-  <a href="{{ with .Get "link" }}{{ . }}{{ else }}{{ .Get "src" }}{{ end }}"{{ with .Get "target" }} target="{{ . }}"{{ end }}{{ with .Get "rel" }} rel="{{ . }}"{{ end }}>
-    <img src="{{ .Get "src" }}"
+  <a href="{{ with .Get "link" }}{{ . }}{{ else }}{{ $imgPermalink }}{{ end }}"{{ with .Get "target" }} target="{{ . }}"{{ end }}{{ with .Get "rel" }} rel="{{ . }}"{{ end }}>
+    <img src="{{ $imgPermalink }}"
             {{- if or (.Get "alt") (.Get "caption") }}
               alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify| plainify }}{{ end }}"
             {{- end -}}
