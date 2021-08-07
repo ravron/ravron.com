@@ -1,10 +1,18 @@
 +++
 title = "Using Let's Encrypt TLS certificates on the UniFi Cloud Key"
 date = 2020-09-09
+lastmod = 2021-08-06
 categories = ["networking", "unifi"]
 summary = """
 How I convinced my browser that my network controller isn't trying to steal my credit card."""
 +++
+
+{{<warning>}}
+Since writing this post, UniFi has released a new version of the
+controller and cloud key software referred to as UniFi OS. The instructions
+below are for versions of the controller before this new version. For a short
+update, see [this post]({{<ref "lets-encrypt-unifi-cloud-key-unifi-os" >}}).
+{{</warning>}}
 
 I've been running UniFi equipment at home for over a year, now, and it's
 generally been great. The hardware performs splendidly, the network is stable,
