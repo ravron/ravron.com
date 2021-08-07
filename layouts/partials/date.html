@@ -5,3 +5,14 @@
     {{ .Date.Format "01-02-2006" }}
   {{ end }}
 </time>
+
+{{ if ne .Date .Lastmod }}
+  (updated
+  <time datetime="{{ .Lastmod.Format "2006-01-02" }}">
+    {{ if $.Site.Params.dateformatpretty }}
+      {{ .Lastmod.Format $.Site.Params.dateformatpretty -}}
+    {{ else }}
+      {{ .Lastmod.Format "01-02-2006" -}}
+    {{ end -}}
+  </time>)
+{{ end }}
