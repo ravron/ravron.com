@@ -61,6 +61,14 @@ jobs:
     - name: Upload to S3
       run: aws s3 sync --delete public s3://ravron.com
 
+    - name: Set S3 cache-control
+      run: |
+        # Sets all css, jpg, and png files to have aggressive caching
+        aws s3 cp --recursive \
+        --exclude '*' --include '*.css' --include '*.jpg' --include '*.png' \
+        --cache-control 'public,max-age=31536000,immutable' \
+        s3://ravron.com/ s3://ravron.com
+
   invalidate-cloudfront:
     name: Invalidate CloudFront
     runs-on: ubuntu-latest
