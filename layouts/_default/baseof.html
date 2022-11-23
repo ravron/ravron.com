@@ -4,7 +4,11 @@
   <meta charset="utf-8">
   <title>
     {{ block "title" . }}
-      {{ .Title }}
+      {{ with .Title }}
+        {{ . }}
+      {{ else }}
+        {{ .Site.Title }}
+      {{ end }}
     {{ end }}
   </title>
   <meta name="description" content="{{ .Page.Summary }}">
